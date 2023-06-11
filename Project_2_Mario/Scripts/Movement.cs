@@ -116,13 +116,15 @@ public class Movement : MonoBehaviour
 
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("x");
-            collision.transform.localScale = new Vector3(collision.transform.localScale.x, collision.transform.localScale.y * 0.5f, collision.transform.localScale.z);
-            Collider2D [] colliders = collision.GetComponents<Collider2D>();
-            foreach(Collider2D collider in colliders)
+            Collider2D[] colliders = collision.GetComponents<Collider2D>();
+
+            foreach (Collider2D collider in colliders)
             {
                 collider.enabled = false;
             }
+            Debug.Log("x");
+            collision.transform.localScale = new Vector3(collision.transform.localScale.x, collision.transform.localScale.y * 0.5f, collision.transform.localScale.z);
+            
             Destroy(collision.gameObject, 0.5f);
         }
     }
